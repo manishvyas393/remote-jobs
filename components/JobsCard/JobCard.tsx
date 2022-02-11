@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Box, Text, Image } from '@chakra-ui/react';
+
 interface Props {
       job: {
             _id:string,
@@ -9,7 +10,8 @@ interface Props {
             contract: string,
             location: string,
             updatedOn: string,
-            salary:string
+            salary: string,
+            image:any
       };
 }
 const JobCard = ({ job }: Props) => {
@@ -21,7 +23,8 @@ const JobCard = ({ job }: Props) => {
                               <Image
                                     borderRadius='lg'
                                     width={{ lg: 40, md: 150,sm:350}}
-                                    src='https://bit.ly/2jYM25F'
+                                    src={job.image === "" || job.image === undefined ? "https://bit.ly/2jYM25F" : job.image}
+                                    height={{ lg: 36, md: 150, sm: 150 }}
                                     alt='Woman paying for a purchase'
                               />
                         </Box>

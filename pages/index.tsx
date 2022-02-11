@@ -30,10 +30,10 @@ const Home = ({ data }: Props) => {
               width: 800,
               height: 600,
               alt: 'Og Image Alt',
-              type: 'image/jpeg',
+              type: 'image/*',
             },
           ],
-          site_name: 'SiteName',
+          site_name: 'Remote-Jobs',
         }
       } />
       <Flex
