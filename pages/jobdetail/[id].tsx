@@ -1,5 +1,6 @@
 import React from "react";
 import JobsDetails from "../../components/JobsDetails/JobsDetails";
+import { Meta } from "../../components/Meta/Meta";
 import { getJobById } from "../../service/jobs";
 interface Props {
   params: {
@@ -35,6 +36,7 @@ interface props {
 const jobDescription = ({ data }: props) => {
   return (
     <>
+      <Meta title={data.job.role} description={`${data.job.company} is hiring ${data.job.role}`} openGraph={null} canonical={""}/>
       <JobsDetails detail={data.job} />
     </>
   );

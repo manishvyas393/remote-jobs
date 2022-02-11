@@ -1,6 +1,7 @@
 import JobCard from "../components/JobsCard/JobCard";
 import { Flex, Heading } from "@chakra-ui/react";
 import { getAllJobs } from "../service/jobs";
+import { Meta } from "../components/Meta/Meta";
 interface Props {
   data: {
     jobs: [
@@ -19,6 +20,22 @@ interface Props {
 const Home = ({ data }: Props) => {
   return (
     <>
+      <Meta title="Home" description="Remote-Jobs" canonical="http://localhost:3000" openGraph={
+        {
+          title: 'Remote-Jobs',
+          description: 'All Remote Jobs',
+          images: [
+            {
+              url: "https://bit.ly/2jYM25F",
+              width: 800,
+              height: 600,
+              alt: 'Og Image Alt',
+              type: 'image/jpeg',
+            },
+          ],
+          site_name: 'SiteName',
+        }
+      } />
       <Flex
         justifyItems="center"
         flexDirection="column"

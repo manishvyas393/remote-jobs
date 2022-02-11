@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../../utils/mongo";
-import Jobs from "../../../models/jobs";
 import { getJobById } from "../../../service/jobs";
 dbConnect();
 type Data = {
