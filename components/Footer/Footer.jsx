@@ -7,7 +7,7 @@ const Footer = () => {
                   <Box display="flex" w={{lg:"50%",sm:"100%"}} px={{lg:5,sm:1}} justifyContent="space-around" mb={5} mt={10}>
                         <Box display="flex" flexDirection="column" w={{sm:"50%"}}>
                               <Text>logo</Text>
-                              <Text>© 2020 Chakra Templates. All rights reserved</Text>
+                              <Text>© 2020.All rights reserved</Text>
                         </Box>
                         <Box display="flex" flexDirection="column">
                               <Heading as="h5" fontSize={{ sm: 28, lg: 35, md: 25 }} fontWeight={{ sm: 300 }} mb={4}>Products</Heading>
