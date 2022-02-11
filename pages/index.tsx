@@ -20,7 +20,7 @@ interface Props {
 const Home = ({ data }: Props) => {
   return (
     <>
-      <Meta title="Home" description="Remote-Jobs" canonical="http://localhost:3000" openGraph={
+      <Meta title="Home" description="Remote-Jobs" canonical="https://remote-jobs-three.vercel.app/" openGraph={
         {
           title: 'Remote-Jobs',
           description: 'All Remote Jobs',
