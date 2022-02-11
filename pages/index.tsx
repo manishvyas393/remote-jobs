@@ -23,13 +23,13 @@ const Home = ({ data }: Props) => {
       <Meta title="Home" description="Remote-Jobs" canonical="https://remote-jobs-three.vercel.app/" openGraph={
         {
           title: 'Remote-Jobs',
-          description: 'All Remote Jobs',
+          description: 'Repository To Apply Jobs All Over The World',
           images: [
             {
               url: "https://bit.ly/2jYM25F",
               width: 800,
               height: 600,
-              alt: 'Og Image Alt',
+              alt: 'Remote-Job',
               type: 'image/*',
             },
           ],

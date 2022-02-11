@@ -30,13 +30,31 @@ interface props {
       salary: string;
       details: any;
       source: string;
+      image:string
     };
   };
 }
 const jobDescription = ({ data }: props) => {
+
+  let image=data.job.image
   return (
     <>
-      <Meta title={data.job.role} description={`${data.job.company} is hiring ${data.job.role}`} openGraph={null} canonical={""}/>
+      <Meta title={data.job.role} description={data.job.company +" is hiring " + data.job.role} openGraph={
+        {
+          title: 'Remote-Jobs',
+          description: data.job.company+" is hiring "+data.job.role,
+          images: [
+            {
+              url:image,
+              width: 800,
+              height: 600,
+              alt: 'Remote-Job',
+              type: 'image/*',
+            },
+          ],
+          site_name: 'Remote-Jobs',
+        }
+      } canonical={""}/>
       <JobsDetails detail={data.job} />
     </>
   );
