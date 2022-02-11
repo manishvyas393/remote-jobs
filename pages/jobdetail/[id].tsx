@@ -35,8 +35,8 @@ interface props {
   };
 }
 const jobDescription = ({ data }: props) => {
-
-  let image=data.job.image
+  let image;
+  data.job.image !== "" || data.job.image !== undefined ? image = data.job.image : image ="https://bit.ly/2jYM25F"
   return (
     <>
       <Meta title={data.job.role} description={data.job.company +" is hiring " + data.job.role} openGraph={
