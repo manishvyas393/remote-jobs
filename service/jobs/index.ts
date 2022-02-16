@@ -7,7 +7,7 @@ dbConnect();
 export const getAllJobs = async (): Promise<iData> => {
   let data: iData = { data: null, error: null };
   try {
-    const jobs = await Jobs.find({}, { details: 0 }).limit(5);
+    const jobs = await Jobs.find({}, { details: 0 });
     console.log(jobs)
     data.data = { jobs: JSON.parse(JSON.stringify(jobs)) };
   } catch (err: any) {
