@@ -2,6 +2,7 @@ import JobCard from "../components/JobsCard/JobCard";
 import { Flex, Heading } from "@chakra-ui/react";
 import { getAllJobs } from "../service/jobs";
 import { Meta } from "../components/Meta/Meta";
+import Footer from "../components/Footer/Footer";
 interface Props {
   data: {
     jobs: [
@@ -18,6 +19,7 @@ interface Props {
   };
 }
 const Home = ({ data }: Props) => {
+  console.log(data)
   return (
     <>
       <Meta title="Home" description="Remote-Jobs" canonical="https://remote-jobs-three.vercel.app/" openGraph={
@@ -42,6 +44,8 @@ const Home = ({ data }: Props) => {
         alignItems="center"
         margin="auto"
         px={{ sm: 52, xs: 72 }}
+        mb={12}
+        pt="150px"
       >
         <Heading
           as="h1"

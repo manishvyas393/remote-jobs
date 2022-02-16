@@ -2,17 +2,17 @@ import { ClassNames } from '@emotion/react';
 import React from 'react';
 import NavBar from "../NavBar/NavBar"
 import Footer from "../Footer/Footer"
+import { Box } from '@chakra-ui/react';
 const Layout = ({ children }) => {
       return (
-            <>
-                  <NavBar/>
-                  <div style={{paddingTop:"150px"}}>
-                        {children}
-                  </div>
-                  <Footer/>
-                        
+            <Box overflow="visible">
                   
-            </>
+                  <NavBar/>
+                  <Box pt={5}>
+                        {children}
+                  </Box>
+                  <Footer/>
+            </Box>
 
       );
 };

@@ -4,27 +4,28 @@ import { Box, Text, Image } from '@chakra-ui/react';
 
 interface Props {
       job: {
-            _id:string,
+            _id: string,
             company: string,
             role: string,
             contract: string,
             location: string,
             updatedOn: string,
             salary: string,
-            image:any
+            image: any
       };
 }
 const JobCard = ({ job }: Props) => {
       return (
-            
+
             <Link href={"/jobdetail/" + job._id} key={job._id} passHref>
-                  <Box p={6} display={{ md: 'flex' }}  backgroundColor="rgba(255,213,0,0.2)" m={3} width={{lg:800,md:750,sm:400,xs:550}} cursor="pointer">
+
+                  <Box p={4} display={{ md: 'flex' }} backgroundColor="rgba(255,213,0,0.2)" m={3} width={{ lg: 650, md: 480, sm: 400, xs: 550, xl: 750 }} cursor="pointer">
                         <Box flexShrink={0}>
                               <Image
                                     borderRadius='lg'
-                                    width={{ lg: 40, md: 150,sm:350}}
+                                    width={{ lg: 40, md: 100, sm: 350 }}
                                     src={job.image === "" || job.image === undefined ? "https://bit.ly/2jYM25F" : job.image}
-                                    height={{ lg: 36, md: 150, sm: 150 }}
+                                    height={{ lg: 36, md: 100, sm: 150 }}
                                     alt='Woman paying for a purchase'
                               />
                         </Box>
@@ -36,7 +37,7 @@ const JobCard = ({ job }: Props) => {
                                     letterSpacing='wide'
                                     color='teal.600'
                               >
-                              {job.company}
+                                    {job.company}
                               </Text>
                               <Text
                                     mt={1}
@@ -44,11 +45,10 @@ const JobCard = ({ job }: Props) => {
                                     fontSize='lg'
                                     lineHeight='normal'
                                     fontWeight='semibold'
-
                                     textDecoration="none"
-                                    width={400}
+                                    width={300}
                               >
-                        {job.role}
+                                    {job.role}
                               </Text>
                               <Text mt={2} color='gray.500'>
                                     {job.location}
@@ -62,9 +62,9 @@ const JobCard = ({ job }: Props) => {
                                     {job.updatedOn}
                               </Text>
                         </Box>
+                  </Box >
+            </Link>
 
-                  </Box></Link>
-        
       );
 };
 
