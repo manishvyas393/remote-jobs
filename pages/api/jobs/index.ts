@@ -9,7 +9,7 @@ export default async function handler(
   let data: iData;
   switch (req.method) {
     case "GET":
-      data = await getAllJobs();
+      data = await getAllJobs(req.query.page);
       res
         .status(data.error ? 500 : 200)
         .json({ data: data.data, err: data.error });

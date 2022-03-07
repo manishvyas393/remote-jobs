@@ -1,8 +1,10 @@
 import JobCard from "../components/JobsCard/JobCard";
-import { Flex, Heading } from "@chakra-ui/react";
+import { Button, Flex, Heading } from "@chakra-ui/react";
 import { getAllJobs } from "../service/jobs";
 import { Meta } from "../components/Meta/Meta";
 import Footer from "../components/Footer/Footer";
+import { useState } from "react";
+import Link from "next/link";
 interface Props {
   data: {
     jobs: [
@@ -19,6 +21,7 @@ interface Props {
   };
 }
 const Home = ({ data }: Props) => {
+  let currentPage=2
   return (
     <>
       <Meta title="Home" description="Remote-Jobs" canonical="https://remote-jobs-three.vercel.app/" openGraph={
@@ -59,15 +62,21 @@ const Home = ({ data }: Props) => {
         {data.jobs.map((job: any) => (
           <JobCard job={job} key={job._id} />
         ))}
+        <Button>
+          <Link href={"/Page/" + currentPage}>
+            Next Page
+          </Link>
+        </Button>
       </Flex>
+      
     </>
+    
   );
 };
-
 export default Home;
 
 export async function getStaticProps() {
-  const { data } = await getAllJobs();
+  const { data } = await getAllJobs(1);
 
   return {
     props: {
