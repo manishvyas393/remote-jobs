@@ -19,7 +19,6 @@ interface Props {
   };
 }
 const Home = ({ data }: Props) => {
-  console.log(data)
   return (
     <>
       <Meta title="Home" description="Remote-Jobs" canonical="https://remote-jobs-three.vercel.app/" openGraph={

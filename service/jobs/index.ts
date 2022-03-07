@@ -1,14 +1,12 @@
 import { iData } from "../../intefaces";
 import Jobs from "../../models/jobs";
 import dbConnect from "../../utils/mongo";
-import features from "../../utils/features";
 dbConnect();
 
 export const getAllJobs = async (): Promise<iData> => {
   let data: iData = { data: null, error: null };
   try {
-    const jobs = await Jobs.find({}, { details: 0 });
-    console.log(jobs)
+    const jobs = await Jobs.find({}, { details: 0 }).limit(8)
     data.data = { jobs: JSON.parse(JSON.stringify(jobs)) };
   } catch (err: any) {
     data.error = err?.message;
