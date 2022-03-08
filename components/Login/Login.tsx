@@ -33,7 +33,7 @@ const Login = ({ nameForEmail, nameForPassword, valueForEmail, valueForPassword,
                   bg={useColorModeValue('gray.50', 'gray.800')}>
                   <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} width="100%">
                         <Stack align={'center'}>
-                              <Heading fontSize={'4xl'} color="gray.600">Login In</Heading>
+                              <Heading fontSize={'4xl'} color="gray.600">Log In</Heading>
                         </Stack>
                         <Box bgColor="tomato">
                               <Text align="center" color="white" fontSize={20} fontWeight={600}>{errMsg}</Text>
