@@ -27,7 +27,7 @@ const Index = () => {
                   await axios.post("/api/register", { name, email, password }).then((data) => {
 
                         if (data.data.data.success) {
-                              router.push("/")
+                              router.push("/login")
                         }
                         if (data.data.err) {
                               setErr(data.data.err)
