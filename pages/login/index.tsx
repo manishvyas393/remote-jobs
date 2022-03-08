@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Login from '../../components/Login/Login'
 import axios from 'axios'
 import { useRouter } from 'next/router'
-const index = () => {
+const Index = () => {
       const router = useRouter()
       const [email, setEmail] = useState("")
       const [password, setPassword] = useState("")
@@ -35,4 +35,4 @@ const index = () => {
       )
 }
 
-export default index
+export default Index

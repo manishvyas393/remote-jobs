@@ -55,7 +55,7 @@ const Home = ({ data, pageNo }: Props) => {
             if (router.asPath === "/Page/1") {
                   router.push("/")
             }
-      })
+      }, [pageNo, lastPage, nextPage, router])
       return (
             <>
                   <Meta title="Home" description="Remote-Jobs" canonical="https://remote-jobs-three.vercel.app/" openGraph={

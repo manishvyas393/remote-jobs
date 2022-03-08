@@ -2,8 +2,7 @@ import {useState} from 'react'
 import Register from '../../components/Register/Register'
 import axios from 'axios'
 import { useRouter } from 'next/router'
-const index = () => {
-      let [sucess,setSucess]=useState(false)
+const Index = () => {
       const router=useRouter()
       const [email, setEmail] = useState("")
       const [name, setName] = useState("")
@@ -54,4 +53,4 @@ const index = () => {
       )
 }
 
-export default index
+export default Index
