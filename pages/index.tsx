@@ -2,8 +2,6 @@ import JobCard from "../components/JobsCard/JobCard";
 import { Button, Flex, Heading } from "@chakra-ui/react";
 import { getAllJobs } from "../service/jobs";
 import { Meta } from "../components/Meta/Meta";
-import Footer from "../components/Footer/Footer";
-import { useState } from "react";
 import Link from "next/link";
 interface Props {
   data: {

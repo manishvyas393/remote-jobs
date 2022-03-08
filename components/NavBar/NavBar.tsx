@@ -37,14 +37,14 @@ const NavBar = () => {
                         flexBasis={{ base: "100%", md: "auto" }}
                   >
                         <Flex
-                              width={{lg:250,md:360}}
+                              width={{lg:300,md:360}}
                               justifyContent={{ lg: "space-around", md: "center", sm: "center",xs:"center"}}
                               alignItems={{ lg: "flex-end", md: "center",  sm: "center",xs:"center"}}
                               direction={{ lg: "row", md: "column", sm: "column",xs:"column"}}
                               pt={[4, 4, 0, 0]} mr={{ md: 50 }}>
-                              <NavLink href='/' name="Home" fontSize={{ sm: "2xl", lg: "xl", md: "xl",xs:"3xl" }}/>
+                              <NavLink href='/' name="Home" fontSize={{ sm: "2xl", lg: "xl", md: "xl",xs:"3xl" }} />
                               <NavLink href='/' name="About" fontSize={{ sm: "2xl", lg: "xl", md: "xl", xs: "3xl" }}/>
-                              <NavLink href='/' name="Login" fontSize={{ sm: "2xl", lg: "xl", md: "xl", xs: "3xl"  }}/>
+                              <NavLink href='/login' name="Login" fontSize={{ sm: "2xl", lg: "xl", md: "xl", xs: "3xl"  }}/>
                         </Flex>
                   </Box>
             </Flex>

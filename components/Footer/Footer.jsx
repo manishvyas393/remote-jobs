@@ -3,7 +3,7 @@ import NavLink from "../NavLink/NavLink"
 import { Flex, Box, Heading, Text } from "@chakra-ui/react"
 const Footer = () => {
       return (
-            <Box display="flex" flexDirection={{ lg: "row", sm: "column" ,md:"column",xs:"column"}} width={{sm:"435px",lg:"102%",md:"100%",xs:"600px"}} backgroundColor={["gray.100"]} height={420} p={{ lg: "50px", sm: "10px" }} mt="5" justifyContent="center" alignItems="center" shadow="inner">
+            <Box display="flex" flexDirection={{ lg: "row", sm: "column" ,md:"column",xs:"column"}} width={{sm:"435px",lg:"102%",md:"100%",xs:"600px"}} backgroundColor={["gray.100"]} height={420} p={{ lg: "50px", sm: "10px" }}  justifyContent="center" alignItems="center" shadow="inner">
                   <Box display="flex" w={{ lg: "50%", sm: "100%", xs: "100%" }} px={{ lg: 25, sm: 0 }} justifyContent="space-around" mt={6}>
                         <Box display="flex" flexDirection="column" mr={4}>
                               <Text>logo</Text>

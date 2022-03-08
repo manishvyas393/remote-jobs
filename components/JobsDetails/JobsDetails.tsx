@@ -21,7 +21,6 @@ const JobsDetails = ({ detail }: Props) => {
  
   return (
     <Container centerContent>
-
       <Flex flexDirection="column" justifyContent="center" alignItems="center" mt="100px">
         <Heading as="h1" fontSize={{ lg: 40, md: 30, sm: 20 }} color="gray.800" mb={5}>{detail.company}</Heading>
         <Box dangerouslySetInnerHTML={{__html:detail.details}} px={{sm:6}}>

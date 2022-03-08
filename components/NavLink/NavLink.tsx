@@ -9,7 +9,7 @@ interface Props {
 const NavLink = ({ href, name ,fontSize}: Props) => {
       return (
             <Link href={href} passHref>
-                  <Text fontSize={fontSize} cursor="pointer">
+                  <Text fontSize={fontSize} cursor="pointer" pl={2}>
                         {name}
                   </Text>
             </Link>
