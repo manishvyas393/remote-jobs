@@ -19,7 +19,7 @@ const NavBar = () => {
                   mb={8}
                   py={6}
                   px={{ sm: 6, md: 20,xs:6}}
-                  bg={["gray.50"]}
+                  bg={["gray.100"]}
                   position="fixed"
                   boxShadow="md"
             >

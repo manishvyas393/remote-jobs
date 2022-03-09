@@ -24,7 +24,7 @@ const Index = () => {
                   setErr("Email cannot be blank")
             }
             else {
-                  await axios.post("/api/register", { name, email, password }).then((data) => {
+                  await axios.post("/api/auth", { name, email, password }).then((data) => {
 
                         if (data.data.data.success) {
                               router.push("/login")

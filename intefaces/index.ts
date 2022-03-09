@@ -6,6 +6,7 @@ export interface iData {
 }
 export interface iLogin {
   data: any,
-  error:any;
+  error: any;
+  token:any
   
 }

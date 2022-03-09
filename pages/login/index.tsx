@@ -4,20 +4,30 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 const Index = () => {
       const router = useRouter()
-      const [email, setEmail] = useState("")
-      const [password, setPassword] = useState("")
+      const [loginEmail, setEmail] = useState("")
+      const [loginPassword, setPassword] = useState("")
       const [err, setErr] = useState("")
       const signUp = async (e: any) => {
             e.preventDefault()
-            console.log(password.length)
-            if (password === "") {
+            if (loginPassword === "") {
                   setErr("Please enter password")
             }
-            else if (password.length <= 8) {
+            else if (loginPassword.length <= 8) {
                   setErr("password length should be more than 8")
             }
-            else if (email === "") {
+            else if (loginEmail === "") {
                   setErr("Email cannot be blank")
+            }
+            else {
+                  await axios.post("/api/auth", { loginEmail, loginPassword }).then((data) => {
+
+                        if (data.data.data.success) {
+                              router.push("/")
+                        }
+                        if (data.data.err) {
+                              setErr(data.data.err)
+                        }
+                  })
             }
 
       }
@@ -25,8 +35,8 @@ const Index = () => {
             <Login
                   nameForEmail="email"
                   nameForPassword="password"
-                  valueForEmail={email}
-                  valueForPassword={password}
+                  valueForEmail={loginEmail}
+                  valueForPassword={loginPassword}
                   onChangeEmail={(e: any) => setEmail(e.target.value)}
                   onChangePassword={(e: any) => setPassword(e.target.value)}
                   onSubmit={signUp}

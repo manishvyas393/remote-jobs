@@ -26,7 +26,7 @@ const JobsDetails = ({ detail }: Props) => {
         <Box dangerouslySetInnerHTML={{__html:detail.details}} px={{sm:6}}>
         </Box>
         
-        <a href={detail.source} target="_blank" rel="noreferrer">
+        <a href={detail.source} target="_blank" rel="noreferrer" style={{marginTop:"30px"}}>
           <Button backgroundColor="teal.600" mb={5} width={{ lg: 250, sm: 350 }} color="whiteAlpha.900" _hover={{ backgroundColor: "teal.500" }}>Apply</Button>
           </a>
       </Flex>
