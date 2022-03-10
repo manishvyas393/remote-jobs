@@ -57,13 +57,12 @@ export const ResetPassword = async (token: any,password:any): Promise<iForgotPas
       let data: iForgotPassword = { data: { success: null, err: null, msg: null }, error: null }
       try {
             const decodeToken:any = jwt.decode(token)
-            console.log(decodeToken.id)
             await User.findOne({ id: decodeToken.id }).then(async (user) => {
                   if (user) {
                         user.password = password;
                         user.passwordResetToken = null;
                         user.save()
-                        data.data.success===true
+                        data.data.success=true
                   }
                   else {
                         data.data.err = "user not found"

@@ -37,7 +37,7 @@ const Index = ({token}:Props) => {
                   await axios.post("/api/auth", {token,resetPassword}).then((data) => {
 
                         if (data.data.data.success) {
-                              router.push("/")
+                              router.push("/login")
                         }
                         if (data.data.err) {
                               setErr(data.data.err)
