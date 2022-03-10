@@ -10,3 +10,7 @@ export interface iLogin {
   token:any
   
 }
+export interface iForgotPassword{
+  data: any,
+  error:any
+}

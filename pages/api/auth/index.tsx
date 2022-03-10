@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { iLogin } from "../../../intefaces";
+import { iLogin,iForgotPassword } from "../../../intefaces";
 import { loginUser, registerUser } from "../../../service/auth";
+import {getPasswordResetLink, ResetPassword} from "../../../service/forgotpassword/index"
 import bcrypt from "bcryptjs"
 import { setCookies,getCookie } from 'cookies-next';
 export default async function handler(
@@ -8,6 +9,7 @@ export default async function handler(
       res: NextApiResponse
 ) {
       let data: iLogin;
+      let data2: iForgotPassword;
       switch (req.method) {
             case "POST":
                   if (req.body.name) {
@@ -24,7 +26,21 @@ export default async function handler(
                         res.status(data.error ? 500 : 200)
                               .json({ data: data.data, err: data.data.err,token:data.token });
                         return; 
-                }
+                  }
+                  if (req.body.forgotEmail) {
+                        data2 = await getPasswordResetLink(req.body.forgotEmail)
+                        res.status(data2.error ? 500 : 200)
+                              .json({ data: data2.data, err: data2.data.err, });
+                        return;
+                  }
+                  if (req.body.token) {
+                        const salt = await bcrypt.genSalt(10)
+                        const hasHPassword = await bcrypt.hash(req.body.resetPassword, salt)
+                        data2 = await ResetPassword(req.body.token,hasHPassword)
+                        res.status(data2.error ? 500 : 200)
+                              .json({ data: data2.data, err: data2.data.err, });
+                        return;
+                  }
             default:
       }
       res.status(200);

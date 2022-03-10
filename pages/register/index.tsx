@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import Register from '../../components/Register/Register'
 import axios from 'axios'
+import { registerUser } from '../../service/auth'
 import { useRouter } from 'next/router'
 const Index = () => {
       const router=useRouter()

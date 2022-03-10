@@ -59,7 +59,7 @@ const Login = ({ nameForEmail, nameForPassword, valueForEmail, valueForPassword,
                                                 <Link href="/register" passHref>
                                                       <Text fontSize="14px" fontWeight={600} color="blue.500" cursor={"pointer"}>Create an account?</Text>
                                                 </Link>
-                                                <Link href="/" passHref>
+                                                <Link href="/forgotpassword" passHref>
                                                       <Text fontSize="14px" fontWeight={600} color="red.500" cursor={"pointer"}>Forgot Password?</Text>
                                                 </Link>
                                     </Box>

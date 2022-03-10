@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Login from '../../components/Login/Login'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import { loginUser } from '../../service/auth'
 const Index = () => {
       const router = useRouter()
       const [loginEmail, setEmail] = useState("")
@@ -20,7 +21,6 @@ const Index = () => {
             }
             else {
                   await axios.post("/api/auth", { loginEmail, loginPassword }).then((data) => {
-
                         if (data.data.data.success) {
                               router.push("/")
                         }
