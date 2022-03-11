@@ -4,13 +4,14 @@ import dbConnect from "../../utils/mongo";
 import nodemailer from "nodemailer"
 import dotenv from "dotenv"
 import jwt from "jsonwebtoken"
+
 dotenv.config()
 const secret = process.env.token_secret_key || "jalpeno";
 dbConnect()
-interface token{
+interface token {
       id: string,
       exp: number,
-      iat:number
+      iat: number
 }
 export const getPasswordResetLink = async (email: any): Promise<iForgotPassword> => {
       let data: iForgotPassword = { data: { success: null, err: null, msg: null }, error: null }
@@ -19,7 +20,8 @@ export const getPasswordResetLink = async (email: any): Promise<iForgotPassword>
                   if (user) {
                         const token = jwt.sign({
                               id: user.id,
-                              exp: Date.now() + 15 * 60 * 1000,
+                              exp: Date.now() + 5 * 60 * 1000,
+                              iat: Date.now()
                         }, secret)
                         user.passwordResetToken = token
                         user.save()
@@ -33,15 +35,19 @@ export const getPasswordResetLink = async (email: any): Promise<iForgotPassword>
                               }
                         })
                         const options = {
+                              from: process.env.email,
                               to: email,
                               subject: "Reset Password Link",
-                              html: `<a href="${process.env.SITE_URL||""}resetpassword/${token}">reset password</a>`
+                              html: `<a href="${process.env.SITE_URL || ""}resetpassword/${token}">reset password</a>`
                         }
-                        const done = await transport.sendMail(options)
-                        if (done.accepted[0] === email) {
-                              data.data.success = true;
-                              data.data.msg = "Reset Link Send"
-                        }
+                        const res = await transport.sendMail(options)
+                              if (res.accepted[0] === email) {
+                                    data.data.success = true;
+                                    data.data.msg = "Link send it will expire in 5 minutes"
+                              }
+                              else {
+                                    data.data.error = "server down"
+                              }
                   }
                   else {
                         data.data.err = "user not found"
@@ -53,19 +59,29 @@ export const getPasswordResetLink = async (email: any): Promise<iForgotPassword>
       }
       return data
 }
-export const ResetPassword = async (token: any,password:any): Promise<iForgotPassword> => {
+export const ResetPassword = async (token: any, password: any): Promise<iForgotPassword> => {
       let data: iForgotPassword = { data: { success: null, err: null, msg: null }, error: null }
       try {
-            const decodeToken:any = jwt.decode(token)
+            const decodeToken: any = jwt.decode(token)
             await User.findOne({ id: decodeToken.id }).then(async (user) => {
-                  if (user) {
-                        user.password = password;
-                        user.passwordResetToken = null;
-                        user.save()
-                        data.data.success=true
+                  if (user && user.passwordResetToken) {
+                        let decodeUserToken: any = jwt.decode(user.passwordResetToken)
+                        let curTime = new Date(Date.now()).toLocaleTimeString()
+                        let expTime = new Date(decodeUserToken.exp).toLocaleTimeString()
+                        if (expTime > curTime) {
+                              user.password = password;
+                              user.passwordResetToken = null;
+                              user.save()
+                              data.data.success = true
+                        }
+                        else {
+                              user.passwordResetToken = null;
+                              user.save()
+                              data.data.err = "link expired"
+                        }
                   }
                   else {
-                        data.data.err = "user not found"
+                        data.data.err = "invalid Token"
                   }
 
             })

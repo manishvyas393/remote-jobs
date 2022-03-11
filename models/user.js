@@ -15,6 +15,7 @@ const UserSchema = new mongoose.Schema({
       },
       passwordResetToken: {
             type: String,
+            default:null
       },
 
 },

@@ -53,6 +53,11 @@ const ResetPassword = ({ valueForPassword, valueForPassword2,onChangePassword,on
                                           <Input type="password"  value={valueForPassword2} onChange={onChangePassword2} />
                                     </FormControl>
                                     <Stack spacing={10}>
+                                          <Box display="flex" px={2} justifyContent="space-between">
+                                                <Link href="/forgotpassword" passHref>
+                                                      <Text fontSize="14px" fontWeight={600} color="blue.500" cursor={"pointer"}>Resend link</Text>
+                                                </Link>
+                                          </Box>
                                           <Button
                                                 bg={'blue.400'}
                                                 mt={4}
