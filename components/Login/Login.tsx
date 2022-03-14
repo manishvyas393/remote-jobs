@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { signIn } from "next-auth/react"
+import { GoMarkGithub } from "react-icons/go"
+import { FcGoogle } from 'react-icons/fc';
 import {
       Flex,
       Box,
@@ -13,6 +16,7 @@ import {
       useColorModeValue,
 } from '@chakra-ui/react';
 import Link from 'next/link';
+import AuthProviderBtn from '../AuthProviderBtn/AuthProviderBtn';
 interface Props {
       nameForEmail: any,
       nameForPassword: any,
@@ -62,20 +66,25 @@ const Login = ({ nameForEmail, nameForPassword, valueForEmail, valueForPassword,
                                                 <Link href="/forgotpassword" passHref>
                                                       <Text fontSize="14px" fontWeight={600} color="red.500" cursor={"pointer"}>Forgot Password?</Text>
                                                 </Link>
-                                    </Box>
-                                    <Button
-                                          bg={'blue.400'}
-                                          mt={4}
-                                          onClick={onSubmit}
-                                          color={'white'}
-                                          _hover={{
-                                                bg: 'blue.500',
-                                          }}>
-                                          Log in
-                                    </Button>
+                                          </Box>
+                                          <Button
+                                                bg={'blue.400'}
+                                                mt={4}
+                                                onClick={onSubmit}
+                                                color={'white'}
+                                                _hover={{
+                                                      bg: 'blue.500',
+                                                }}>
+                                                Log in
+                                          </Button>
+                                          <Box>
+                                                <AuthProviderBtn btnName='Google' icon={<FcGoogle />} bg="white" txtColor='black' siginInWith="google"/>
+                                                <AuthProviderBtn btnName='Github' icon={<GoMarkGithub />} bg="black" txtColor='white' siginInWith="github"/>
+                                          </Box>
+
+                                    </Stack>
                               </Stack>
-                  </Stack>
-            </Box>
+                        </Box>
                   </Stack >
             </Flex >
       );
