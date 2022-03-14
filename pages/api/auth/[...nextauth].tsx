@@ -1,8 +1,8 @@
-import dotenv from "dotenv"
 import NextAuth from 'next-auth';
 import GitHubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import { oauthProviders } from "../../../service/auth"
+import dotenv from "dotenv"
 dotenv.config()
 interface params {
       profile: any,
@@ -11,13 +11,13 @@ interface params {
 export default NextAuth({
       providers: [
             GoogleProvider({
-                  clientId: process.env.GOOGLE_ID || "756066472582-kg8r5ebi37k7rk2il6lsmbilmlmb68id.apps.googleusercontent.com",
-                  clientSecret: process.env.GOOGLE_SECRET || "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",
+                  clientId: process.env.GOOGLE_ID||"",
+                  clientSecret: process.env.GOOGLE_SECRET || "",
             }),
 
             GitHubProvider({
-                  clientId: process.env.GITHUB_ID || "016d6c8bd11d0aa3f74a",
-                  clientSecret: process.env.GITHUV_SECRET || "faf565c76b9d99a3d2cd72fb7ff69bcfd939c21c"
+                  clientId: process.env.GITHUB_ID || "",
+                  clientSecret: process.env.GITHUV_SECRET || ""
             })
       ],
       jwt: {
