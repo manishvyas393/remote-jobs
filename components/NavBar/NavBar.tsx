@@ -3,6 +3,9 @@ import Link from 'next/link';
 import { Box, Flex, MenuIcon, Text, Stack} from '@chakra-ui/react';
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
 import NavLink from '../NavLink/NavLink';
+interface Props{
+      auth:string
+}
 const NavBar = () => {
       const [isOpen, setOpen] = useState(false)
       const toggle = (e: { preventDefault: () => void; }) => {

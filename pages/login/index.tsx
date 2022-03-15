@@ -1,9 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Login from '../../components/Login/Login'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { loginUser } from '../../service/auth'
-const Index = () => {
+import { getSession } from 'next-auth/react'
+interface session{
+      session:any
+}
+const Index = ({session}:session) => {
       const router = useRouter()
       const [loginEmail, setEmail] = useState("")
       const [loginPassword, setPassword] = useState("")
@@ -31,6 +35,11 @@ const Index = () => {
             }
 
       }
+      useEffect(() => {
+            if (session?.user?.email) {
+                  router.push("/")
+            }
+      },[session?.user?.email,router])
       return (
             <Login
                   nameForEmail="email"
@@ -46,3 +55,12 @@ const Index = () => {
 }
 
 export default Index
+export async function getServerSideProps(context: any) {
+      const session = await getSession(context)
+      console.log(session)
+      return {
+            props: {
+                  session,
+            },
+      };
+}

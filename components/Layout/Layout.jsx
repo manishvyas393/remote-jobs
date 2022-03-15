@@ -1,9 +1,8 @@
-import { ClassNames } from '@emotion/react';
 import React from 'react';
 import NavBar from "../NavBar/NavBar"
 import Footer from "../Footer/Footer"
 import { Box } from '@chakra-ui/react';
-const Layout = ({ children }) => {
+const Layout = ({ children}) => {
       return (
             <Box overflow="visible">
                   

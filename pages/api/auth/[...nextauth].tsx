@@ -12,23 +12,22 @@ export default NextAuth({
       providers: [
             GoogleProvider({
                   clientId: process.env.GOOGLE_ID||"",
-                  clientSecret: process.env.GOOGLE_SECRET || "",
+                  clientSecret: process.env.GOOGLE_SECRET||"",
             }),
 
             GitHubProvider({
                   clientId: process.env.GITHUB_ID || "",
-                  clientSecret: process.env.GITHUV_SECRET || ""
+                  clientSecret: process.env.GITHUB_SECRET || ""
             })
       ],
-      jwt: {
-            maxAge: 60 * 60 * 24 * 30,
-      },
-      secret: process.env.token_secret_key,
       callbacks: {
             async signIn({ account, profile }: params) {
                   await oauthProviders(profile, account)
                   return true
             },
       },
+      pages: {
+            signIn: '/login'
+      }
 })
 

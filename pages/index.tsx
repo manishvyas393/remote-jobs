@@ -2,6 +2,7 @@ import JobCard from "../components/JobsCard/JobCard";
 import { Button, Flex, Heading } from "@chakra-ui/react";
 import { getAllJobs } from "../service/jobs";
 import { Meta } from "../components/Meta/Meta";
+import { getSession } from 'next-auth/react'
 import Link from "next/link";
 interface Props {
   data: {
@@ -18,7 +19,7 @@ interface Props {
     ];
   };
 }
-const Home = ({ data }: Props) => {
+const Home = ({ data,}: Props,{}) => {
   let currentPage=2
   return (
     <>
@@ -75,7 +76,6 @@ export default Home;
 
 export async function getStaticProps() {
   const { data } = await getAllJobs(1);
-
   return {
     props: {
       data,
