@@ -11,7 +11,7 @@ const NavLink = ({ href, name ,fontSize,onClick}: Props) => {
       return (
             <Link href={href} passHref>
                   <Button backgroundColor={"transparent"} _hover={{backgroundColor:"transparent"}} onClick={onClick}>
-                        <Text fontSize={fontSize} cursor="pointer" pl={2}>
+                        <Text fontSize={fontSize} fontWeight={500} cursor="pointer" pl={2}>
                               {name}
                         </Text>
                   </Button>
