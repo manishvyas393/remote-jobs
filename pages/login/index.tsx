@@ -12,6 +12,9 @@ const Index = ({session}:session) => {
       const [loginEmail, setEmail] = useState("")
       const [loginPassword, setPassword] = useState("")
       const [err, setErr] = useState("")
+      if (session) {
+            localStorage.setItem("session", JSON.stringify(session))
+      }
       const signUp = async (e: any) => {
             e.preventDefault()
             if (loginPassword === "") {
@@ -57,7 +60,6 @@ const Index = ({session}:session) => {
 export default Index
 export async function getServerSideProps(context: any) {
       const session = await getSession(context)
-      console.log(session)
       return {
             props: {
                   session,

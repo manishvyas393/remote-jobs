@@ -11,8 +11,8 @@ interface params {
 export default NextAuth({
       providers: [
             GoogleProvider({
-                  clientId: process.env.GOOGLE_ID||"",
-                  clientSecret: process.env.GOOGLE_SECRET||"",
+                  clientId: process.env.GOOGLE_ID || "",
+                  clientSecret: process.env.GOOGLE_SECRET || "",
             }),
 
             GitHubProvider({
@@ -20,6 +20,7 @@ export default NextAuth({
                   clientSecret: process.env.GITHUB_SECRET || ""
             })
       ],
+      secret: process.env.SECRET || "",
       callbacks: {
             async signIn({ account, profile }: params) {
                   await oauthProviders(profile, account)
