@@ -12,9 +12,7 @@ const Index = ({session}:session) => {
       const [loginEmail, setEmail] = useState("")
       const [loginPassword, setPassword] = useState("")
       const [err, setErr] = useState("")
-      if (session) {
-            localStorage.setItem("session", JSON.stringify(session))
-      }
+      
       const signUp = async (e: any) => {
             e.preventDefault()
             if (loginPassword === "") {
@@ -41,6 +39,12 @@ const Index = ({session}:session) => {
       useEffect(() => {
             if (session?.user?.email) {
                   router.push("/")
+            }
+            if (session?.user) {
+                  localStorage.setItem("session", JSON.stringify(session))
+            }
+            else {
+                  localStorage.clear()
             }
       },[session?.user?.email,router])
       return (

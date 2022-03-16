@@ -3,13 +3,12 @@ import Link from 'next/link';
 import { Box, Flex, MenuIcon, Text, Stack, Button } from '@chakra-ui/react';
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
 import NavLink from '../NavLink/NavLink';
-import {signOut} from "next-auth/react"
+import { signOut } from "next-auth/react"
 interface Props {
       auth: string
 }
 const NavBar = () => {
       const [isOpen, setOpen] = useState(false)
-      const [text, setText] = useState("Login")
       let session: any
       const toggle = (e: { preventDefault: () => void; }) => {
             e.preventDefault()
@@ -21,9 +20,6 @@ const NavBar = () => {
       } else {
             console.log('we are running on the server');
       }
-      useEffect(() => {
-            session?.user?.email ? setText("Logout") : setText("Login")
-      }, [session])
       return (
             <Flex
                   as="nav"
@@ -39,7 +35,7 @@ const NavBar = () => {
                   boxShadow="md"
             >
                   <Box>
-                        <NavLink href='/' name="Remote Jobs" fontSize={{ md: "3xl", sm: "2xl", xs: "3xl" }} onClick={null}/>
+                        <NavLink href='/' name="Remote Jobs" fontSize={{ md: "3xl", sm: "2xl", xs: "3xl" }} onClick={null} />
                   </Box>
                   <Box display={{ base: "block", md: "block", lg: "none" }} onClick={toggle} transition="all">
                         {
@@ -57,10 +53,12 @@ const NavBar = () => {
                               alignItems={{ lg: "flex-end", md: "center", sm: "center", xs: "center" }}
                               direction={{ lg: "row", md: "column", sm: "column", xs: "column" }}
                               pt={[4, 4, 0, 0]} mr={{ md: 50 }}>
-                              <NavLink href='/' name="Home" fontSize={{ sm: "2xl", lg: "md", md: "xl", xs: "3xl" }} onClick={null}/>
-                              <NavLink href='/' name="About" fontSize={{ sm: "2xl", lg: "xl", md: "xl", xs: "3xl" }} onClick={null}/>
-                              <NavLink href='/login' name={text} fontSize={{ sm: "2xl", lg: "xl", md: "xl", xs: "3xl" }} onClick={session?.user ? () => signOut({ callbackUrl: '/' }):null}/>
-
+                              <NavLink href='/' name="Home" fontSize={{ sm: "2xl", lg: "xl", md: "xl", xs: "3xl" }} onClick={null} />
+                              <NavLink href='/' name="About" fontSize={{ sm: "2xl", lg: "xl", md: "xl", xs: "3xl" }} onClick={null} />
+                              {
+                                    session?.user ? <NavLink href='/login' name="Logout" fontSize={{ sm: "2xl", lg: "xl", md: "xl", xs: "3xl" }} onClick={session?.user ? () => signOut({ callbackUrl: '/login' }) : null} /> :
+                                          <NavLink href='/login' name="Login" fontSize={{ sm: "2xl", lg: "xl", md: "xl", xs: "3xl" }} onClick={null} />
+                              }
 
                         </Flex>
                   </Box>
