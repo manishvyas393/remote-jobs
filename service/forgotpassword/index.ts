@@ -8,11 +8,6 @@ import jwt from "jsonwebtoken"
 dotenv.config()
 const secret = process.env.token_secret_key || "jalpeno";
 dbConnect()
-interface token {
-      id: string,
-      exp: number,
-      iat: number
-}
 export const getPasswordResetLink = async (email: any): Promise<iForgotPassword> => {
       let data: iForgotPassword = { data: { success: null, err: null, msg: null }, error: null }
       try {

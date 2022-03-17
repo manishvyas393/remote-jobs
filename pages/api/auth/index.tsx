@@ -3,7 +3,7 @@ import { iLogin,iForgotPassword } from "../../../intefaces";
 import { loginUser, registerUser } from "../../../service/auth";
 import {getPasswordResetLink, ResetPassword} from "../../../service/forgotpassword/index"
 import bcrypt from "bcryptjs"
-import { setCookies,getCookie } from 'cookies-next';
+import { setCookies} from 'cookies-next';
 export default async function handler(
       req: NextApiRequest,
       res: NextApiResponse
