@@ -12,7 +12,6 @@ const Index = ({session}:session) => {
       const [loginEmail, setEmail] = useState("")
       const [loginPassword, setPassword] = useState("")
       const [err, setErr] = useState("")
-      
       const signUp = async (e: any) => {
             e.preventDefault()
             if (loginPassword === "") {

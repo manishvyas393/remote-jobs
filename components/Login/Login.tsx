@@ -48,7 +48,6 @@ const Login = ({ nameForEmail, nameForPassword, valueForEmail, valueForPassword,
                               bg={useColorModeValue('white', 'gray.700')}
                               boxShadow={'lg'}
                               p={4}>
-
                               <Stack spacing={4}>
                                     <FormControl id="email">
                                           <FormLabel>Email address</FormLabel>

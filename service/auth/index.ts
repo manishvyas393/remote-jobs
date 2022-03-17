@@ -69,8 +69,6 @@ export const oauthProviders = async (profile: any, account: any) => {
                   email_verified: profile.email_verified
             })
             const saved = await user.save()
-            console.log(saved)
-
       }
       if (account.provider === "github") {
             const user = new GithubUsers({
@@ -81,6 +79,5 @@ export const oauthProviders = async (profile: any, account: any) => {
                   github_ProfileUrl: profile.html_url
             })
             const saved = await user.save()
-            console.log(saved)
       }
 }
