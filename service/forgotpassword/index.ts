@@ -4,7 +4,6 @@ import dbConnect from "../../utils/mongo";
 import nodemailer from "nodemailer"
 import dotenv from "dotenv"
 import jwt from "jsonwebtoken"
-
 dotenv.config()
 const secret = process.env.token_secret_key || "jalpeno";
 dbConnect()

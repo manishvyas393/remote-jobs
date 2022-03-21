@@ -2,16 +2,18 @@ import { useEffect, useState } from 'react'
 import Login from '../../components/Login/Login'
 import axios from 'axios'
 import { useRouter } from 'next/router'
-import { loginUser } from '../../service/auth'
 import { getSession } from 'next-auth/react'
+import { checkCookies, getCookies } from 'cookies-next';
 interface session{
       session:any
 }
 const Index = ({session}:session) => {
       const router = useRouter()
+      const cookie=getCookies()
       const [loginEmail, setEmail] = useState("")
       const [loginPassword, setPassword] = useState("")
       const [err, setErr] = useState("")
+      console.log(cookie.token)
       const signUp = async (e: any) => {
             e.preventDefault()
             if (loginPassword === "") {
@@ -41,6 +43,9 @@ const Index = ({session}:session) => {
             }
             if (session?.user) {
                   localStorage.setItem("session", JSON.stringify(session))
+            }
+            if (cookie?.token) {
+                  router.push("/") 
             }
             else {
                   localStorage.clear()

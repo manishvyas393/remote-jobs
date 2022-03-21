@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { Box, Flex, MenuIcon, Text, Stack, Button } from '@chakra-ui/react';
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
 import NavLink from '../NavLink/NavLink';
 import { signOut } from "next-auth/react"
+import { getCookies,setCookies,removeCookies } from 'cookies-next';
+import { useRouter } from 'next/router';
 interface Props {
       auth: string
 }
 const NavBar = () => {
       const [isOpen, setOpen] = useState(false)
+      const cookie=getCookies()
       let session: any
       const toggle = (e: { preventDefault: () => void; }) => {
             e.preventDefault()
             setOpen(!isOpen)
+      }
+      const logout = (e:any) => {
+            e.preventDefault()
+            removeCookies("token")
       }
       if (typeof window !== 'undefined') {
             console.log('we are running on the client')
@@ -20,6 +26,7 @@ const NavBar = () => {
       } else {
             console.log('we are running on the server');
       }
+     
       return (
             <Flex
                   as="nav"
@@ -56,7 +63,7 @@ const NavBar = () => {
                               <NavLink href='/' name="Home" fontSize={{ sm: "2xl", lg: "xl", md: "xl", xs: "3xl" }} onClick={null} />
                               <NavLink href='/' name="About" fontSize={{ sm: "2xl", lg: "xl", md: "xl", xs: "3xl" }} onClick={null} />
                               {
-                                    session?.user ? <NavLink href='/login' name="Logout" fontSize={{ sm: "2xl", lg: "xl", md: "xl", xs: "3xl" }} onClick={session?.user ? () => signOut({ callbackUrl: '/login' }) : null} /> :
+                                    session?.user || cookie?.token ? <NavLink href='/login' name="Logout" fontSize={{ sm: "2xl", lg: "xl", md: "xl", xs: "3xl" }} onClick={session?.user ? () => signOut({ callbackUrl: '/login' }) : cookie?.token?logout:null} /> :
                                           <NavLink href='/login' name="Login" fontSize={{ sm: "2xl", lg: "xl", md: "xl", xs: "3xl" }} onClick={null} />
                               }
 

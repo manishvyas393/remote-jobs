@@ -2,8 +2,11 @@ import JobCard from "../components/JobsCard/JobCard";
 import { Button, Flex, Heading } from "@chakra-ui/react";
 import { getAllJobs } from "../service/jobs";
 import { Meta } from "../components/Meta/Meta";
-import { getSession } from 'next-auth/react'
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useSession } from 'next-auth/react'
+import { getCookies } from 'cookies-next';
+import { useEffect } from "react";
 interface Props {
   data: {
     jobs: [
@@ -19,8 +22,17 @@ interface Props {
     ];
   };
 }
-const Home = ({ data,}: Props,{}) => {
-  let currentPage=2
+
+const Home = ({ data, }: Props, { }) => {
+  let currentPage = 2
+  const router = useRouter()
+  const cookie = getCookies()
+
+  useEffect(() => {
+    if (!cookie.token) {
+      router.push("/login")
+    }
+  })
   return (
     <>
       <Meta title="Home" description="Remote-Jobs" canonical="https://remote-jobs-three.vercel.app/" openGraph={
@@ -67,9 +79,9 @@ const Home = ({ data,}: Props,{}) => {
           </Link>
         </Button>
       </Flex>
-      
+
     </>
-    
+
   );
 };
 export default Home;
@@ -83,3 +95,4 @@ export async function getStaticProps() {
     revalidate: 3600,
   };
 }
+
