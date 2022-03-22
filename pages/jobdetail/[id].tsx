@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import JobsDetails from "../../components/JobsDetails/JobsDetails";
 import { Meta } from "../../components/Meta/Meta";
 import { getJobById } from "../../service/jobs";
+import { getCookies } from 'cookies-next';
+import { useRouter } from "next/router";
 interface Props {
   params: {
     id: string;
@@ -36,7 +38,14 @@ interface props {
 }
 const jobDescription = ({ data }: props) => {
   let image;
-  data.job.image !== "" || data.job.image !== undefined ? image = data.job.image : image ="https://bit.ly/2jYM25F"
+  data.job.image !== "" || data.job.image !== undefined ? image = data.job.image : image = "https://bit.ly/2jYM25F"
+  const cookies = getCookies()
+  const router=useRouter()
+  useEffect(() => {
+    if (!cookies.token) {
+      router.push("/login")
+    }
+  },[router])
   return (
     <>
       <Meta title={data.job.role} description={data.job.company +" is hiring " + data.job.role} openGraph={

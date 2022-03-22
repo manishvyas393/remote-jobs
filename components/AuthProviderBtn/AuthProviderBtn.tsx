@@ -27,5 +27,4 @@ const AuthProviderBtn = ({ icon, siginInWith, btnName,bg,txtColor }: Props) => {
       );
 
 }
-
 export default AuthProviderBtn

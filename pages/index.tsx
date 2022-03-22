@@ -4,7 +4,6 @@ import { getAllJobs } from "../service/jobs";
 import { Meta } from "../components/Meta/Meta";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useSession } from 'next-auth/react'
 import { getCookies } from 'cookies-next';
 import { useEffect } from "react";
 interface Props {
@@ -22,12 +21,10 @@ interface Props {
     ];
   };
 }
-
 const Home = ({ data, }: Props, { }) => {
   let currentPage = 2
   const router = useRouter()
   const cookie = getCookies()
-
   useEffect(() => {
     if (!cookie.token) {
       router.push("/login")
