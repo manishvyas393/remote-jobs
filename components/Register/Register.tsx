@@ -36,7 +36,7 @@ const Register = ({ nameForEmail, nameForName, nameForPassword, valueForEmail, v
                   justifyContent="center"
                   width={{ sm: "410px", lg: "102%", md: "100%", xs: "600px" }}
                   bg={useColorModeValue('gray.50', 'gray.800')}>
-                  <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} width="100%">
+                  <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} width="90%">
                         <Stack align={'center'}>
                               <Heading fontSize={'4xl'} color="gray.500">Create account</Heading>
                         </Stack>
