@@ -31,8 +31,9 @@ const Login = ({ nameForEmail, nameForPassword, valueForEmail, valueForPassword,
             <Flex
                   minH={'90vh'}
                   alignItems={'center'}
+                  mt={4}
                   justifyContent="center"
-                  width={{ sm: "435px", lg: "102%", md: "100%", xs: "600px" }}
+                  width={{ sm: "100%", lg: "102%", md: "100%", xs: "600px" }}
                   bg={useColorModeValue('gray.50', 'gray.800')}>
                   <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} width="100%">
                         <Stack align={'center'}>
@@ -46,6 +47,7 @@ const Login = ({ nameForEmail, nameForPassword, valueForEmail, valueForPassword,
                               rounded={'lg'}
                               bg={useColorModeValue('white', 'gray.700')}
                               boxShadow={'lg'}
+                              width={{sm:"92%"}}
                               p={4}>
                               <Stack spacing={4}>
                                     <FormControl id="email">
