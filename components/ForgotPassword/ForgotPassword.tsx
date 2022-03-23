@@ -28,7 +28,7 @@ const ForgotPassword = ({ nameForEmail,valueForEmail, onSubmit, onChangeEmail,er
                   justifyContent="center"
                   width={{ sm: "435px", lg: "102%", md: "100%", xs: "600px" }}
                   bg={useColorModeValue('gray.50', 'gray.800')}>
-                  <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} width="100%">
+                  <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} width="90%">
                         <Stack align={'center'}>
                               <Heading fontSize={'4xl'} color="gray.600">Forgot Password</Heading>
                         </Stack>
