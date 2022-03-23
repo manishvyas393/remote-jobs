@@ -4,7 +4,7 @@ import { getAllJobs } from "../service/jobs";
 import { Meta } from "../components/Meta/Meta";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { getCookies } from 'cookies-next';
+import { getCookies } from "cookies-next";
 import { useEffect } from "react";
 interface Props {
   data: {
@@ -21,33 +21,36 @@ interface Props {
     ];
   };
 }
-const Home = ({ data, }: Props, { }) => {
-  let currentPage = 2
-  const router = useRouter()
-  const cookie = getCookies()
-  useEffect(() => {
-    if (!cookie.token) {
-      router.push("/login")
-    }
-  })
+const Home = ({ data }: Props, {}) => {
+  let currentPage = 2;
+  const router = useRouter();
+  const cookie = getCookies();
+  // useEffect(() => {
+  //   if (!cookie.token) {
+  //     router.push("/login")
+  //   }
+  // })
   return (
     <>
-      <Meta title="Home" description="Remote-Jobs" canonical="https://remote-jobs-three.vercel.app/" openGraph={
-        {
-          title: 'Remote-Jobs',
-          description: 'Repository To Apply Jobs All Over The World',
+      <Meta
+        title="Home"
+        description="Remote-Jobs"
+        canonical="https://remote-jobs-three.vercel.app/"
+        openGraph={{
+          title: "Remote-Jobs",
+          description: "Repository To Apply Jobs All Over The World",
           images: [
             {
               url: "https://bit.ly/2jYM25F",
               width: 800,
               height: 600,
-              alt: 'Remote-Job',
-              type: 'image/*',
+              alt: "Remote-Job",
+              type: "image/*",
             },
           ],
-          site_name: 'Remote-Jobs',
-        }
-      } />
+          site_name: "Remote-Jobs",
+        }}
+      />
       <Flex
         justifyItems="center"
         flexDirection="column"
@@ -71,14 +74,10 @@ const Home = ({ data, }: Props, { }) => {
           <JobCard job={job} key={job._id} />
         ))}
         <Button>
-          <Link href={"/Page/" + currentPage}>
-            Next Page
-          </Link>
+          <Link href={"/Page/" + currentPage}>Next Page</Link>
         </Button>
       </Flex>
-
     </>
-
   );
 };
 export default Home;
@@ -92,4 +91,3 @@ export async function getStaticProps() {
     revalidate: 3600,
   };
 }
-

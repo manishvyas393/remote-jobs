@@ -2,14 +2,13 @@ import React, { useEffect } from "react";
 import JobsDetails from "../../components/JobsDetails/JobsDetails";
 import { Meta } from "../../components/Meta/Meta";
 import { getJobById } from "../../service/jobs";
-import { getCookies } from 'cookies-next';
+import { getCookies } from "cookies-next";
 import { useRouter } from "next/router";
 interface Props {
   params: {
     id: string;
   };
 }
-
 
 export const getServerSideProps = async ({ params }: Props) => {
   const id = params.id;
@@ -32,38 +31,43 @@ interface props {
       salary: string;
       details: any;
       source: string;
-      image:string
+      image: string;
     };
   };
 }
 const jobDescription = ({ data }: props) => {
   let image;
-  data.job.image !== "" || data.job.image !== undefined ? image = data.job.image : image = "https://bit.ly/2jYM25F"
-  const cookies = getCookies()
-  const router=useRouter()
-  useEffect(() => {
-    if (!cookies.token) {
-      router.push("/login")
-    }
-  },[router])
+  data.job.image !== "" || data.job.image !== undefined
+    ? (image = data.job.image)
+    : (image = "https://bit.ly/2jYM25F");
+  const cookies = getCookies();
+  // const router = useRouter();
+  // useEffect(() => {
+  //   if (!cookies.token) {
+  //     router.push("/login");
+  //   }
+  // }, [router]);
   return (
     <>
-      <Meta title={data.job.role} description={data.job.company +" is hiring " + data.job.role} openGraph={
-        {
-          title: 'Remote-Jobs',
-          description: data.job.company+" is hiring "+data.job.role,
+      <Meta
+        title={data.job.role}
+        description={data.job.company + " is hiring " + data.job.role}
+        openGraph={{
+          title: "Remote-Jobs",
+          description: data.job.company + " is hiring " + data.job.role,
           images: [
             {
-              url:image,
+              url: image,
               width: 800,
               height: 600,
-              alt: 'Remote-Job',
-              type: 'image/*',
+              alt: "Remote-Job",
+              type: "image/*",
             },
           ],
-          site_name: 'Remote-Jobs',
-        }
-      } canonical={""}/>
+          site_name: "Remote-Jobs",
+        }}
+        canonical={""}
+      />
       <JobsDetails detail={data.job} />
     </>
   );
