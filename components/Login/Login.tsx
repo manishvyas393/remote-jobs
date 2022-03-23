@@ -35,7 +35,7 @@ const Login = ({ nameForEmail, nameForPassword, valueForEmail, valueForPassword,
                   justifyContent="center"
                   width={{ sm: "100%", lg: "102%", md: "100%", xs: "600px" }}
                   bg={useColorModeValue('gray.50', 'gray.800')}>
-                  <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} width="90%">
+                  <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} width="90%" mt={12}>
                         <Stack align={'center'}>
                               <Heading fontSize={'4xl'} color="gray.600">Log In</Heading>
                         </Stack>
