@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { GoMarkGithub } from "react-icons/go"
 import { FcGoogle } from 'react-icons/fc';
 import {
@@ -7,7 +7,6 @@ import {
       FormControl,
       FormLabel,
       Input,
-      Checkbox,
       Stack,
       Button,
       Heading,
