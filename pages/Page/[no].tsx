@@ -5,7 +5,6 @@ import { Meta } from "../../components/Meta/Meta";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { getCookies } from 'cookies-next';
 interface Props {
       data: {
             jobs: [
@@ -39,7 +38,6 @@ export const getServerSideProps = async ({ params }: Props) => {
       };
 };
 const Home = ({ data, pageNo }: Props) => {
-      const cookies=getCookies()
       let [nextPage, setNextPage] = useState(pageNo)
       let [prevPage, setPrevPage] = useState(pageNo)
       let [disabled, setDisabled] = useState(false)
@@ -48,7 +46,7 @@ const Home = ({ data, pageNo }: Props) => {
       useEffect(() => {
             setNextPage(parseInt(pageNo) + 1)
             setPrevPage(parseInt(pageNo) - 1)
-            if (lastPage <nextPage) {
+            if (lastPage < nextPage) {
                   setDisabled(true)
             }
             else {
@@ -56,9 +54,6 @@ const Home = ({ data, pageNo }: Props) => {
             }
             if (router.asPath === "/Page/1") {
                   router.push("/")
-            }
-            if (!cookies.token) {
-                  router.push("/login")
             }
       }, [pageNo, lastPage, nextPage, router])
       return (
@@ -116,11 +111,7 @@ const Home = ({ data, pageNo }: Props) => {
 
                               </Button>
                         </Box>
-                       
                   </Flex>
-               
-
-
             </>
       );
 };

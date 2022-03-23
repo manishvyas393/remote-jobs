@@ -4,7 +4,8 @@ import Footer from "../Footer/Footer"
 import { Box } from '@chakra-ui/react';
 const Layout = ({ children}) => {
       return (
-            <Box overflow="visible">
+            <Box overflow="hidden"
+            >
                   
                   <NavBar/>
                   <Box pt={5}>
